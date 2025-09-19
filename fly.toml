@@ -1,0 +1,23 @@
+# fly.toml app configuration file generated for echo-internal on 2025-09-10T19:24:47+05:30
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'echo-internal'
+primary_region = 'sjc'
+
+[build]
+  dockerfile = 'Dockerfile'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ['app']
+
+[[vm]]
+  memory = '16gb'
+  cpu_kind = 'performance'
+  cpus = 2
